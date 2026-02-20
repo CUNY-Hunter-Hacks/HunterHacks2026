@@ -322,6 +322,7 @@ function App() {
             </div>
           </div>
         </div>
+        <img src="/birds_footer.png" alt="Birds" className="footer-birds" />
         <div className="footer-bottom">
           <p>&copy; 2026 HunterHacks. All rights reserved.</p>
         </div>
