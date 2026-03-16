@@ -23,6 +23,9 @@ function App() {
   const [openFaqIndex, setOpenFaqIndex] = useState(null)
   const [countdown, setCountdown] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 })
   const [hoveredBorough, setHoveredBorough] = useState(null)
+  const [typewriterText, setTypewriterText] = useState('')
+  const [isTyping, setIsTyping] = useState(true)
+  const [hasStartedTyping, setHasStartedTyping] = useState(false)
   const boroughRefs = useRef({
     bx: null,
     mn: null,
@@ -32,6 +35,9 @@ function App() {
   })
   const canvasRefs = useRef({})
   const mapContainerRef = useRef(null)
+  const boroughsSectionRef = useRef(null)
+
+  const fullText = "HunterHacks is CUNY Hunter College's premier hackathon. This year's theme is New York City focused, highlighting the uniqueness of each of the cities boroughs and the problems that can be solved within them."
 
   useEffect(() => {
     const targetDate = new Date('2026-04-25T18:00:00').getTime()
@@ -56,6 +62,83 @@ function App() {
     const interval = setInterval(updateCountdown, 1000)
 
     return () => clearInterval(interval)
+  }, [])
+
+  useEffect(() => {
+    if (!hasStartedTyping) return
+
+    let currentIndex = 0
+    const typingSpeed = 20 // milliseconds per character
+
+    const typeWriter = () => {
+      if (currentIndex < fullText.length) {
+        setTypewriterText(fullText.substring(0, currentIndex + 1))
+        currentIndex++
+      } else {
+        setIsTyping(false)
+      }
+    }
+
+    const interval = setInterval(typeWriter, typingSpeed)
+
+    return () => clearInterval(interval)
+  }, [fullText, hasStartedTyping])
+
+  useEffect(() => {
+    if (hasStartedTyping) return
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setHasStartedTyping(true)
+          }
+        })
+      },
+      {
+        threshold: 0.1,
+        rootMargin: '0px'
+      }
+    )
+
+    const currentSection = boroughsSectionRef.current
+    if (currentSection) {
+      observer.observe(currentSection)
+    }
+
+    return () => {
+      if (currentSection) {
+        observer.unobserve(currentSection)
+      }
+    }
+  }, [hasStartedTyping])
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const navbar = document.querySelector('.navbar')
+      if (!navbar) return
+
+      const scrollPosition = window.scrollY
+      const heroSection = document.querySelector('.hero-section')
+
+      if (heroSection) {
+        const heroHeight = heroSection.offsetHeight
+
+        // If in hero section (which has dark background), use light text
+        if (scrollPosition < heroHeight - 100) {
+          navbar.classList.remove('light-bg')
+          navbar.classList.add('dark-bg')
+        } else {
+          // Otherwise use dark text for light background sections
+          navbar.classList.remove('dark-bg')
+          navbar.classList.add('light-bg')
+        }
+      }
+    }
+
+    handleScroll() // Run once on mount
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
   const faqs = [
@@ -97,12 +180,19 @@ function App() {
     setOpenFaqIndex(openFaqIndex === index ? null : index)
   }
 
+  const handleSpotlight = (e) => {
+    const card = e.currentTarget
+    const rect = card.getBoundingClientRect()
+    card.style.setProperty('--x', `${e.clientX - rect.left}px`)
+    card.style.setProperty('--y', `${e.clientY - rect.top}px`)
+  }
+
   const boroughInfo = {
-    bx: { name: "The Bronx", info: "Coming Soon!", bird: halfBird },
-    mn: { name: "Manhattan", info: "Coming Soon!", bird: whiteBird },
-    si: { name: "Staten Island", info: "Coming Soon!", bird: yellowBird },
-    bk: { name: "Brooklyn", info: "Coming Soon!", bird: pinkBird },
-    qn: { name: "Queens", info: "Coming Soon!", bird: purpleBird }
+    bx: { name: "Bronx", subtitle: "Resilience & Empowerment: education, health equity, sustainability", bird: halfBird },
+    mn: { name: "Manhattan", subtitle: "Global Connections: finance, arts, tourism, international communities", bird: whiteBird },
+    si: { name: "Staten Island", subtitle: "Environment & Community: green tech, local engagement, transportation", bird: yellowBird },
+    bk: { name: "Brooklyn", subtitle: "Creativity & Culture: music, design, community-driven solutions", bird: pinkBird },
+    qn: { name: "Queens", subtitle: "Diversity in Action: multilingual tools, immigrant support, global food/health", bird: purpleBird }
   }
 
   const handleImageLoad = (borough, img) => {
@@ -181,7 +271,7 @@ function App() {
             const scaleY = imgRect.height / img.naturalHeight
 
             const boroughCenterX = (imgRect.left - containerRect.left) + (canvasData.visibleBounds.centerX * scaleX)
-            const boroughTopY = (imgRect.top - containerRect.top) + (canvasData.visibleBounds.minY * scaleY) - 150
+            const boroughTopY = (imgRect.top - containerRect.top) + (canvasData.visibleBounds.minY * scaleY) - 60
 
             setCardPosition({
               top: `${boroughTopY}px`,
@@ -198,7 +288,7 @@ function App() {
 
   return (
     <div className="app">
-      <nav className="navbar">
+      <nav className="navbar dark-bg">
         <div className="nav-brand">HH</div>
         <div className="nav-links">
           <a href="#hero">
@@ -230,7 +320,8 @@ function App() {
             <span className="word-hunter">Hunter</span>
             <span className="word-hacks">Hacks</span>
           </h1>
-          <a href="#" className="apply-btn">APPLY NOW</a>
+          <span className="subtitle">APRIL 25-26, 2026</span>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLScpHTvrN-lQDza87mipyb7YAIR766syYSYsdgjdw8DqNMpBTg/viewform" className="apply-btn">APPLY NOW</a>
           <div className="countdown-container">
             <div className="countdown-unit">
               <div className="countdown-value">
@@ -265,18 +356,22 @@ function App() {
               <div className="countdown-label">SECONDS</div>
             </div>
           </div>
-          <span className="subtitle">APRIL 25-26, 2026</span>
         </div>
       </section>
 
+      <div className="sections-wrapper">
       <section className="content-section" id="about">
-        <div className="boroughs-section">
+        <div className="boroughs-section" ref={boroughsSectionRef}>
           <img src={borosTitle} alt="Battle of the Boroughs" className="section-title" />
-          <p className="boroughs-description">
-            HunterHacks is Hunter College's 1st premier student-led hackathon organized by the CS Department, Hunter Daedulus Committee, USG, Girls Who Code, Women in Computer Science Club, and the Computer Science Club.We are dedicated to empowering students to use technology for social wellness and community impact. We believe that innovation thrives when diverse minds come together to solve real-world problems, and at HunterHacks, we're here to make that happen--one hack at a time.
-          </p>
           <div className="boroughs-content">
-            <div className="map-container" ref={mapContainerRef} onMouseMove={handleMouseMove} onMouseLeave={() => setHoveredBorough(null)}>
+            <div className="map-container">
+              <div className="map-visual" ref={mapContainerRef} onMouseMove={handleMouseMove} onMouseLeave={() => setHoveredBorough(null)}>
+              <div className="map-text-container">
+                <p className={`map-description ${isTyping ? 'typing' : ''}`}>
+                  {typewriterText}
+                </p>
+                {!isTyping && <p className="map-hint-inline">Click a borough to learn more about the track.</p>}
+              </div>
               <img
                 src={boroughQN}
                 alt="Queens"
@@ -322,9 +417,10 @@ function App() {
                 <div className="borough-info-card" style={{ top: cardPosition.top, left: cardPosition.left }}>
                   <h3 className="borough-name">{boroughInfo[hoveredBorough].name}</h3>
                   <img src={boroughInfo[hoveredBorough].bird} alt={`${boroughInfo[hoveredBorough].name} bird`} className="borough-bird" />
-                  <p className="info-coming-soon">{boroughInfo[hoveredBorough].info}</p>
+                  <p className="borough-subtitle">{boroughInfo[hoveredBorough].subtitle}</p>
                 </div>
               )}
+              </div>
             </div>
           </div>
         </div>
@@ -335,14 +431,14 @@ function App() {
           <img src={scheduleTitle} alt="Schedule" className="section-title" />
 
           <div className="schedule-menus">
-            <div className="schedule-day">
+            <div className="schedule-day" onMouseMove={handleSpotlight}>
               <h3 className="day-title">Friday, April 25</h3>
               <div className="schedule-item">
                 <h4 className="schedule-event">Coming Soon!</h4>
               </div>
             </div>
 
-            <div className="schedule-day">
+            <div className="schedule-day" onMouseMove={handleSpotlight}>
               <h3 className="day-title">Saturday, April 26</h3>
               <div className="schedule-item">
                 <h4 className="schedule-event">Coming Soon!</h4>
@@ -422,6 +518,7 @@ function App() {
           </div>
         </div>
       </footer>
+      </div>
     </div>
   )
 }
