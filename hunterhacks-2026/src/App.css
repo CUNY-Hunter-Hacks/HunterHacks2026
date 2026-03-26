@@ -1,5 +1,6 @@
 .app {
   width: 100%;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   overflow-x: hidden;
@@ -1050,6 +1051,9 @@
   padding: 3rem 2rem;
   box-sizing: border-box;
   contain: layout;
+  margin-top: auto;
+  position: relative;
+  z-index: 10;
 }
 
 .footer-container {
