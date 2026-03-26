@@ -848,12 +848,12 @@
 .sponsors-section {
   width: 100%;
   background: transparent;
-  padding: 2rem 2rem;
+  padding: 2rem 2rem 8rem 2rem;
   box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: center;
-  contain: layout;
+  /* contain: layout; */
 }
 
 .sponsors-container {
@@ -1050,7 +1050,7 @@
   background: linear-gradient(to bottom, transparent 0%, #3d208d 10%);
   padding: 3rem 2rem;
   box-sizing: border-box;
-  contain: layout;
+  /* contain: layout; removed */
   margin-top: auto;
   position: relative;
   z-index: 10;
