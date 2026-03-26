@@ -152,7 +152,7 @@ function App() {
     },
     {
       question: "Who can participate?",
-      answer: "Any currently enrolled Hunter student is eligible to participate, regardless of major or coding background."
+      answer: "Any currently enrolled CUNY student is eligible to participate, regardless of major or coding background."
     },
     {
       question: "How do I register?",
