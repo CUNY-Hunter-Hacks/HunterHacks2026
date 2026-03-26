@@ -484,9 +484,9 @@ function App() {
             <img src={sponsorsTitle} alt="Sponsors" className="section-title" />
             <div className="sponsors-content">
               <div className="card-fan">
-                <img src="/Metrocard_default.png" alt="Sponsor" className="sponsor-card card-1" />
-                <img src="/Metrocard_default.png" alt="Sponsor" className="sponsor-card card-2" />
-                <img src="/Metrocard_default.png" alt="Sponsor" className="sponsor-card card-3" />
+                <img src="/Hunter_Card.png" alt="Hunter College" className="sponsor-card card-1" />
+                <img src="/Bloomberg_Card.png" alt="Bloomberg" className="sponsor-card card-2" />
+                <img src="/BASTA_Card.png" alt="BASTA" className="sponsor-card card-3" />
                 <img src="/Metrocard_default.png" alt="Sponsor" className="sponsor-card card-4" />
                 <img src="/Metrocard_default.png" alt="Sponsor" className="sponsor-card card-5" />
               </div>
