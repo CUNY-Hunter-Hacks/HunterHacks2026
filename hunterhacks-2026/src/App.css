@@ -671,7 +671,7 @@
   border-radius: 20px;
   padding: 2rem 1.5rem;
   width: 100%;
-  height: 650px;
+  min-height: 650px;
   box-sizing: border-box;
   overflow: hidden;
   display: flex;
@@ -722,8 +722,9 @@
 }
 
 .schedule-item {
-  margin-bottom: 1.5rem;
-  padding: 1rem 0;
+  margin-bottom: 0.6rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .schedule-item:last-child {
@@ -731,14 +732,37 @@
   margin-bottom: 0;
 }
 
+.schedule-item--highlight .schedule-event {
+  color: #ffc72a;
+}
+
+.schedule-time {
+  display: block;
+  font-family: 'Roadway', sans-serif;
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.15rem;
+}
+
 .schedule-event {
   font-family: 'Roadway', sans-serif;
-  font-size: 1rem;
+  font-size: 0.95rem;
   color: #ffffff;
   margin: 0;
   font-weight: normal;
-  line-height: 1.4;
+  line-height: 1.3;
   text-transform: uppercase;
+}
+
+.schedule-location {
+  display: inline-block;
+  font-size: 0.65rem;
+  color: rgba(255, 255, 255, 0.4);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-top: 0.1rem;
 }
 
 .faq-section {
@@ -1290,7 +1314,8 @@
 
   .schedule-day {
     padding: 1.5rem 1.25rem;
-    height: 420px;
+    min-height: 420px;
+    height: auto;
     max-width: 310px;
     margin: 0 auto;
   }
