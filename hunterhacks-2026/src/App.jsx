@@ -673,7 +673,7 @@ function App() {
                   className="sponsor-card card-3"
                 />
                 <img
-                  src="/Metrocard_default.png"
+                  src="/Career_Center_Card.png"
                   alt="Sponsor"
                   className="sponsor-card card-4"
                 />
