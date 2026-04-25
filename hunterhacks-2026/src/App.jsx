@@ -543,13 +543,13 @@ function App() {
 
             <div className="schedule-menus">
               <div className="schedule-day" onMouseMove={handleSpotlight}>
-                <h3 className="day-title">Saturday, April 26</h3>
-                <div className="schedule-item">
-                  <span className="schedule-time">9:00 AM</span>
-                  <h4 className="schedule-event">Doors Open &amp; Setup</h4>
-                </div>
+                <h3 className="day-title">Saturday, April 25</h3>
                 <div className="schedule-item">
                   <span className="schedule-time">10:00 AM</span>
+                  <h4 className="schedule-event">Doors Open | North 10th Flr&amp; Check-In</h4>
+                </div>
+                <div className="schedule-item">
+                  <span className="schedule-time">10:15 AM</span>
                   <h4 className="schedule-event">Team Confirmations</h4>
                 </div>
                 <div className="schedule-item">
@@ -589,16 +589,10 @@ function App() {
               </div>
 
               <div className="schedule-day" onMouseMove={handleSpotlight}>
-                <h3 className="day-title">Sunday, April 27</h3>
-                <div className="schedule-item">
-                  <span className="schedule-time">9:00 AM</span>
-                  <h4 className="schedule-event">
-                    Setup &amp; Breakfast Available
-                  </h4>
-                </div>
+                <h3 className="day-title">Sunday, April 26</h3>
                 <div className="schedule-item">
                   <span className="schedule-time">10:00 AM</span>
-                  <h4 className="schedule-event">Breakfast</h4>
+                  <h4 className="schedule-event">Breakfast | West 8th Flr</h4>
                 </div>
                 <div className="schedule-item schedule-item--highlight">
                   <span className="schedule-time">11:30 AM</span>
