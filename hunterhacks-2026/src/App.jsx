@@ -674,7 +674,7 @@ function App() {
                   className="sponsor-card card-2"
                 />
                 <img
-                  src="/BASTA_Card.png"
+                  src="/BASTA_Card_new.png"
                   alt="BASTA"
                   className="sponsor-card card-3"
                 />
