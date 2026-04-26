@@ -614,7 +614,7 @@ function App() {
                 </div>
                 <div className="schedule-item schedule-item--highlight">
                   <span className="schedule-time">3:30 PM</span>
-                  <h4 className="schedule-event">Closing Ceremony</h4>
+                  <h4 className="schedule-event">Closing Ceremony | HW 615</h4>
                 </div>
                 <div className="schedule-item">
                   <span className="schedule-time">4:30 PM</span>
