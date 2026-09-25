@@ -6,10 +6,12 @@ This repository holds the site for every HunterHacks edition, each in its own fo
 
 ## Editions
 
-| Year | Theme | Dates | Website | Code & docs |
-|---|---|---|---|---|
-| 2026 | Battle of the Boroughs | April 25–26, 2026 | [hunterhacks.com](https://hunterhacks.com) | [hunterhacks-2026](./hunterhacks-2026/README.md) |
-| 2025 | — | May 2–4, 2025 | — | [hunterhacks-2025](./hunterhacks-2025/README.md) |
+Live at [hunterhacks.com](https://hunterhacks.com) — the domain always points to the current edition's site.
+
+| Year | Theme | Dates | Code & docs |
+|---|---|---|---|
+| 2026 | Battle of the Boroughs | April 25–26, 2026 | [hunterhacks-2026](./hunterhacks-2026/README.md) |
+| 2025 | MTA Subway | May 2–4, 2025 | [hunterhacks-2025](./hunterhacks-2025/README.md) |
 
 ## 2026 — Battle of the Boroughs
 
@@ -47,11 +49,11 @@ Setup instructions, architecture notes, and component/file breakdowns live in ea
 
 ## Team
 
-- Kelly Lin: Lead Designer & Lead Developer
-- [Ynalois Pangilinan](https://github.com/ynaloisp): Developer
-- [Kyle Bautista](https://github.com/KymaiselHunter): Lead Developer
-- [Natalie Gallo](https://github.com/natalie-gallo): Developer
-- [Emily Klapper](https://github.com/emiklap): Developer
-- [Maggie Ma](https://github.com/maggeema): Developer
-- Tahya Mumtahi: Contributor
-- Fariha Kha: Contributor
+- [Kelly Lin](https://github.com/Kxlcl) ([LinkedIn](https://www.linkedin.com/in/kxllylin/)): Lead Designer & Lead Developer
+- [Ynalois Pangilinan](https://github.com/ynaloisp) ([LinkedIn](https://www.linkedin.com/in/ynalois-pangilinan/)): Developer
+- [Kyle Bautista](https://github.com/KymaiselHunter) ([LinkedIn](https://www.linkedin.com/in/kyle-r-bautista/)): Lead Developer
+- [Natalie Gallo](https://github.com/natalie-gallo) ([LinkedIn](https://www.linkedin.com/in/nataliegallo04/)): Developer
+- [Emily Klapper](https://github.com/emiklap) ([LinkedIn](https://www.linkedin.com/in/emilyklapper390/)): Developer
+- [Maggie Ma](https://github.com/maggeema) ([LinkedIn](https://www.linkedin.com/in/maggeema/)): Developer
+- [Tahya Mumtahi](https://github.com/tahya765) ([LinkedIn](https://www.linkedin.com/in/tahya-mumtahi/)): Contributor
+- [Fariha Kha](https://github.com/FarihaKha) ([LinkedIn](https://www.linkedin.com/in/fariha-kha/)): Contributor

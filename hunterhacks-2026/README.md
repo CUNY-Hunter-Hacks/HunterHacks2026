@@ -82,3 +82,4 @@ TODO: the 2025 site documents deploying via Vercel, but nothing in this reposito
 - Ynalois Pangilinan — Developer
 - Natalie Gallo — Developer
 - Emily Klapper — Developer
+- Kyle Bautista — Hosting

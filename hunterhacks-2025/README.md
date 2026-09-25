@@ -131,7 +131,7 @@ footer and contacts component
 ## Credits
 Made with love from the GWC Team:
 - Kelly Lin — Lead Designer & Lead Developer
-- Kyle Bautista — Lead Developer
+- Kyle Bautista — Lead Developer & Hosting
 - Ynalois Pangilinan — Developer
 - Maggie Ma — Contributor
 - Tahya Mumtahi — Contributor
